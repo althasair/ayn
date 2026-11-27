@@ -447,7 +447,7 @@ body{background:#08170E;overflow:hidden}.hidden{display:none!important}
 #stage .qz,#stage .spot,#stage .rq,#stage .chn,#stage .chx{min-height:0}
 #stage .qz>div:first-child{overflow:hidden}
 #ctl{transition:opacity .4s}#ctl.hid{opacity:0!important;pointer-events:none}
-</style>
+#stage .cm{font-size:21px!important;line-height:1.5}#stage .cm.sleep{background:rgba(201,160,78,.22)!important;color:#F3D48C;border:1px dashed #C9A04E}.sent{font-size:16px!important;line-height:1.7}.sent small{font-size:12px;opacity:.75}</style>
 </head>
 <body>
 <div id="wrap" class="hidden"><div id="stage"></div></div>
@@ -1014,7 +1014,7 @@ function Phone(root){
    const qq=q.type==='role'?q.ev.q[role]:q;const sc=q.type==='role'?`<div style="background:var(--nv);color:#fff;border-radius:14px;padding:10px 12px;font-size:14.5px;line-height:1.7;margin-bottom:10px">${q.ev.icon} ${esc(q.ev.scene)}</div><div class="phS" style="color:var(--fu)">${roleOf(role).i} سؤالكِ أنتِ: ${roleOf(role).t}</div>`:`<div class="phS" style="color:var(--fu)">${esc(qq.tag||'')}</div>${qq.key?'<div class="phS" style="color:#2F6B45">🤝 تشاوري مع مجموعتكِ… ثم اختاري</div>':''}`;
    if(!qq){shell('<div class="wait"><div class="e">👀</div><p>تابعي الشاشة</p></div>');return}
    const O=qq.pick?qq.opts.map((_,i)=>i):order(qq,id+role);
-   shell(`${sc}${qq.ctx?`<div class="phS" style="color:var(--ink);font-size:15px">${esc(qq.ctx)}</div>`:''}<div class="phT" ${qq.ctx?'style="color:#7A5233"':''}>${esc(qq.text)}</div>${O.map((i,k)=>`<button class="pOp${myAns&&+myAns.v===i?' on':''}" data-i="${i}"><b>${LET[k]}</b>${esc(qq.opts[i].t)}</button>`).join('')}${myAns?'<div class="sent">✓ وصلت إجابتكِ… يمكنكِ تغييرها ما دام السؤال مفتوحًا</div>':''}`);
+   shell(`${sc}${qq.ctx?`<div class="phS" style="color:var(--ink);font-size:15px">${esc(qq.ctx)}</div>`:''}<div class="phT" ${qq.ctx?'style="color:#7A5233"':''}>${esc(qq.text)}</div>${O.map((i,k)=>`<button class="pOp${myAns&&+myAns.v===i?' on':''}" data-i="${i}"><b>${LET[k]}</b>${esc(qq.opts[i].t)}</button>`).join('')}${myAns?`<div class="sent">✓ ${esc(pick(ANSFUN,me+id+myAns.v))}<br><small>يمكنكِ تغيير إجابتكِ ما دام السؤال مفتوحًا</small></div>`:''}`);
    root.querySelectorAll('.pOp').forEach(b=>b.onclick=async()=>{myAns={v:b.dataset.i};lastKey='';render(true);await send(id,b.dataset.i)});return}
   if(st.ph==='closed'){shell(q.type==='hot'?'<div class="wait"><div class="e">📦</div><p>حفظنا إجابتكِ… وسنعود إليها في الختام 😏</p></div>':'<div class="wait"><div class="e">🥁</div><p>أُغلقت الإجابات…</p><small>انظري إلى الشاشة</small></div>');return}
   if(st.ph==='reveal'){const sc=scoreOne(id,me,myAns,{[me]:role});const my=JSON.parse(ls('ay_my')||'{}');my[id]=sc;ls('ay_my',JSON.stringify(my));
@@ -1037,6 +1037,7 @@ function Phone(root){
 
 /* =================== الشاشة =================== */
 const ALLA={};let ROLESOF={},att=[],cur=+(ls('ay_i')||0),step=0,phase='idle',tLeft=0,tInt=null,paused=false,EVALS=[];
+const SIDENO=['السؤال مرّ وأنتنّ في جولة متابعة 😄','على وضع الطيران؟ ✈️ الجاية لا تفوتكن!','الجوال في الشنطة؟ 😅 طلّعوه!','نبي نسمع صوتكن… ولو بضغطة 🙈'],ANSFUN=['قرار صقر 🦅… واثقة؟','وصلت! 😏 بنشوف عيون الصقر','تم… الحين ننطر الشاشة 👀','اختيار جريء! 💪','أوكي… المجموعة تعتمد عليج 😄'];
 const QT=60,QT_ROLE=60,QT_SPOT=60,QT_WALL=90;
 function fit(){const s=Math.min(innerWidth/1600,innerHeight/900);$('#stage').style.transform=`scale(${s})`}
 function F(i,html,tag='div',cls=''){return`<${tag} data-i="${i}" class="f ${step>i?'on':''} ${cls}">${html}</${tag}>`}
@@ -1156,7 +1157,7 @@ function qHTML(id){const q=QS[id],A=ALLA[id]||{},n=Object.keys(A).length,tot=Mat
  const opts=O.map((i,k)=>{const o=q.opts[i];let c='op';if(rev)c+=q.pick?' best':o.p===2?' best':o.p===1?' p1':' dim';const rl=q.pick&&rev?`<small class="rl">${o.roles.map(k=>roleOf(k).t).join(' · ')}</small>`:'';return`<div class="${c}">${rev?`<i class="bar" style="width:${n?cnt[i]/n*100:0}%"></i>`:''}<span class="L">${LET[k]}</span><span>${esc(o.t)}${rl}</span>${rev?`<span class="c">${ar(cnt[i])}</span>`:''}</div>`}).join('');
  let side=phase==='open'?timerHTML(QT):'';side+=`<div class="cnt">✅ <b id="nA">${ar(n)}</b> من ${ar(tot)}</div>`;
  if(q.type==='hot'&&phase!=='open'&&phase!=='idle')side+='<div class="saved">📦 حفظنا إجاباتكنّ…<br>نعود إليها في الختام 😏</div>';
- else if(rev&&!q.pick){side+=Object.keys(A).slice(0,3).map(nm=>{const o=q.opts[+A[nm].v];return`<div class="cm ${o.p===2?'ok':'no'}">${esc(fill(o.r||'',nm))}</div>`}).join('')}
+ else if(rev){const ks=Object.keys(A);side+=ks.slice(0,4).map(nm=>{const ok=scoreOne(id,nm,A[nm],ROLESOF)>=20,o=q.opts[+A[nm].v]||{};const msg=q.pick?(ok?`أحسنتِ يا ${first(nm)}! هذه حلقتكِ في السلسلة 🔗`:`يا ${first(nm)}… هذه حلقة زميلتكِ 😉`):fill(o.r||'',nm);return`<div class="cm ${ok?'ok':'no'}">${esc(msg)}</div>`}).join('');const miss=att.filter(n=>!A[n]);if(miss.length)side+=`<div class="cm sleep">😴 ${esc(miss.slice(0,3).map(first).join('، '))}${miss.length>3?' وغيرهن':''}… ${esc(pick(SIDENO,id))}</div>`}
  return`<div class="sl ${dark?'dark':''}"><div class="hd"><span class="tg">${q.tag}</span>${q.key&&!rev?'<h2 style="font-size:30px">🤝 تشاوري مع مجموعتكِ… ثم أجيبي من جوالكِ</h2>':''}</div><div class="qz"><div>${q.ctx?`<div class="qctx">${esc(q.ctx)}</div>`:''}<div class="qt ${q.ctx?'qhl':''}">${esc(q.text)}</div>${q.pick?`<div class="pk2">${opts}</div>`:opts}${rev&&q.why?`<div class="why">🗝️ ${esc(q.why)}</div>`:''}${rev&&q.big?`<div class="qbig">${esc(q.big)}</div>`:''}${rev&&q.key?`<div style="margin-top:14px">${kmeter(know(q.key))}<div style="font-size:20px;color:#D6E2CC;margin-top:4px">من ${ar(q.key*25)}٪ ممكنة حتى الآن</div></div>`:''}</div><div class="side">${side}</div></div></div>`}
 function spotHTML(){const A=ALLA.spot||{},n=Object.keys(A).length,rev=phase==='reveal';const hits=SPOT.parts.map((_,i)=>Object.values(A).filter(a=>String(a.v).split(',').includes(String(i))).length);
  return`<div class="sl"><div class="hd"><span class="tg">${SPOT.tag}</span><h2>أيّ هذه الملاحظات… إشارة تستحق المتابعة؟</h2></div><div class="spot"><div class="spg">${SPOT.parts.map((p,i)=>`<div class="sx ${rev?(p.bad?'hit':'dim'):''}"><b>${ar(i+1)}</b><span>${esc(p.t)}</span>${rev?`<em>${ar(hits[i])}</em>`:''}</div>`).join('')}</div><div class="side">${phase==='open'?timerHTML(QT_SPOT):''}<div class="cnt">✅ <b id="nA">${ar(n)}</b> من ${ar(Math.max(att.length,n))}</div></div></div></div>`}
