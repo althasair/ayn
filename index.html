@@ -930,7 +930,7 @@ function order(q,seed){const idx=q.opts.map((_,i)=>i);const h=hash(seed);return 
 
 /* الأصوات */
 let AC=null,soundOn=true;
-function tone(fs,dur=.5,type='sine',vol=.12,gap=.12){vol*=.45;if(!soundOn)return;try{if(!AC)AC=new(window.AudioContext||window.webkitAudioContext)();const c=AC,t=c.currentTime;fs.forEach((f,k)=>{const o=c.createOscillator(),g=c.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(0,t+k*gap);g.gain.linearRampToValueAtTime(vol,t+k*gap+.02);g.gain.exponentialRampToValueAtTime(.001,t+k*gap+dur);o.connect(g).connect(c.destination);o.start(t+k*gap);o.stop(t+k*gap+dur+.05)})}catch(e){}}
+function tone(fs,dur=.5,type='sine',vol=.12,gap=.12){if(!soundOn)return;try{if(!AC)AC=new(window.AudioContext||window.webkitAudioContext)();const c=AC,t=c.currentTime;fs.forEach((f,k)=>{const o=c.createOscillator(),g=c.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(0,t+k*gap);g.gain.linearRampToValueAtTime(vol,t+k*gap+.02);g.gain.exponentialRampToValueAtTime(.001,t+k*gap+dur);o.connect(g).connect(c.destination);o.start(t+k*gap);o.stop(t+k*gap+dur+.05)})}catch(e){}}
 const chime=()=>tone([784,1047,1319,1568],1),tick=()=>tone([1200],.08,'square',.04),ding=()=>tone([1320],.35,'sine',.08);
 function burst(list,count=24,target){target=target||$('#stage');for(let i=0;i<count;i++){const s=document.createElement('span');s.className='fx';s.textContent=list[i%list.length];s.style.left=(Math.random()*95)+'%';s.style.animationDelay=(Math.random()*1.2)+'s';s.style.fontSize=(28+Math.random()*30)+'px';target.appendChild(s);setTimeout(()=>s.remove(),5000)}}
 
