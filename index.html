@@ -390,7 +390,7 @@ body{background:#08170E;overflow:hidden}.hidden{display:none!important}
 #stage .bj{display:flex;align-items:center;justify-content:center;text-align:center}#stage .bj span{font-size:30px;color:#E8C26A;font-weight:700;line-height:1.3}
 #stage .chn{flex:1;display:flex;flex-direction:column;gap:16px;padding:16px 70px 50px}
 #stage .chn .sc{font-size:34px;line-height:1.6;color:#fff;background:rgba(16,44,29,.88);border-right:8px solid #C9A04E;border-radius:18px;padding:14px 24px}
-#stage .lks{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;flex:1}
+#stage .lks{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;flex:1}
 #stage .lk{background:rgba(16,44,29,.9);border:2px solid #8DBF6E;border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:10px;position:relative}
 #stage .lk b{font-size:26px;color:#E8C26A}#stage .lk span{font-size:27px;line-height:1.55;color:#fff}
 #stage .ay{margin-right:auto;font-size:34px;color:#E8C26A}
@@ -458,7 +458,7 @@ body{background:#08170E;overflow:hidden}.hidden{display:none!important}
 const ROLES=[
  {k:'mn',t:'منسقة شؤون الطالبات',i:'🧭'},{k:'ms',t:'المشرفة الإدارية',i:'📋'},{k:'ij',t:'الاختصاصية الاجتماعية',i:'🤝'},
  {k:'nf',t:'الاختصاصية النفسية',i:'🧠'},{k:'mt',t:'مشرفة الطالبات',i:'👀'},{k:'st',t:'موظفة الاستقبال',i:'☎️'},
- {k:'mq',t:'مشرفة المقصف',i:'🥪'},{k:'mk',t:'أمينة المخزن',i:'📦'},{k:'kh',t:'مشرفة الخدمات',i:'🧹'}];
+ {k:'mq',t:'مشرفة المقصف',i:'🥪'},{k:'mk',t:'أمينة المخزن',i:'📦'}];
 
 /* الحاضرات */
 const STAFF={
@@ -469,8 +469,7 @@ const STAFF={
  mk:['موزة دلمراد'],
  mq:['سارة الكواري'],
  st:['في الدوسري'],
- mt:['أحلام يسن','آلاء عبدالرزاق','حفيظة حسن','خداخير محمد','رفعة الدوسري','سوسن الزبير','شاهيناز الطاهر','شريفة حمد','فايزة عبدالله','نورة أبوبكر'],
- kh:['جمشيدبيجم محمد','فاطمة الجيلاني','مي مصطفى','نادية منصور']
+ mt:['أحلام يسن','آلاء عبدالرزاق','حفيظة حسن','خداخير محمد','رفعة الدوسري','سوسن الزبير','شاهيناز الطاهر','شريفة حمد','فايزة عبدالله','نورة أبوبكر']
 };
 
 const EVENTS=[
@@ -716,7 +715,6 @@ const EYES=[
  {k:'st',d:'ترى وجه البنت كل صباح: مَن يتكرّر تأخيرها، ومَن تدخل متضايقة أو مستاءة… فترصدها بعينها قبل السجل'},
  {k:'mq',d:'مَن لا تأكل، ومَن تستلف كل يوم، ومَن تأكل وحدها'},
  {k:'mt',d:'البوابة والممرات والساحة: مَن تتأخر في الخروج، ومَن تتشاجر، ومَن تمشي وحدها'},
- {k:'kh',d:'عيون العاملات في كل زاوية: مَن تختبئ في دورة المياه، والكتابة على الجدران'},
  {k:'mk',d:'مَن تطلب الأدوات كل أسبوع… مهملة؟ أم أسرة محتاجة تستحي أن تقول؟'},
  {k:'mn',d:'تجمع ما رأته العيون كلها… فتصير الملاحظات المتفرّقة صورة واحدة'},
  {k:'ij',d:'ترى البيت خلف البنت'},
@@ -814,7 +812,6 @@ const QS={
  k2:{type:'key',key:2,pick:1,tag:'🗝️ مفتاح المحطة الثانية',ctx:'نورة تغيّرت… وكل واحدة منكنّ رأت قطعة منها.',text:'اختاري الإجراء الذي يخصّ مسمّاكِ أنتِ في السلسلة:',why:'لكل مسمّى حلقة… وحين تقوم كل واحدة بحلقتها، تكتمل السلسلة وتصل الصورة كاملة.',opts:[
   {t:'أرصد تأخّرها وملامحها عند الوصول… وأبلّغ المشرفة',roles:['st']},
   {t:'أبلّغ المشرفة الإدارية بما رأيته عند البوابة أو في الساحة',roles:['mt']},
-  {t:'أنقل للمشرفة ما رأته العاملات… ومنذ متى يحدث',roles:['kh']},
   {t:'ألاحظ ما تغيّر في شرائها أو طلباتها… وأبلّغ المشرفة',roles:['mq','mk']},
   {t:'أقترب منها بكلمة دافئة… وأرسل ملاحظاتي للمنسقة',roles:['ms']},
   {t:'أجمع الملاحظات في صورة واحدة… وأرفعها إلى لجنة إدارة السلوك',roles:['mn']},
@@ -854,7 +851,7 @@ const FLOW=[
  {map:1},
  {story:'ghulam'},{q:'dun'},{home:1,n:5},{whyd:1,n:3},{q:'jap'},{story:'steinberg'},{q:'stein'},{brain:1,n:4},
  {check:1,n:2},{q:'k1'},{map:2},
- {story:'hudhud'},{eyes:1,n:9},{keys:1,n:3},{chain:1,n:6},{rq:'e1',honor:['nf']},
+ {story:'hudhud'},{eyes:1,n:8},{keys:1,n:3},{chain:1,n:5},{rq:'e1',honor:['nf']},
  {check:2,n:2,honor:['ij']},{q:'k2'},{map:3},
  {spot:1},{says:1,n:5,honor:['lulu']},{dodont:1,n:4},{story:'musa'},{q:'musa'},{story:'windows'},{q:'win'},{writes:1,n:3},{rq:'e2'},
  {check:3,n:2},{q:'k3'},{map:4},
@@ -878,7 +875,7 @@ const REFS={
 
 /* مؤثرات صوتية حسب مود القصة: متوسطة 10 ثوانٍ ثم تخفت حتى تختفي عند 30 ثانية */
 const SFX={omar:'wind',steinberg:'car',windows:'glass',jap:'japan'};
-const CHAIN={scene:'«نورة» في الصف الحادي عشر… كانت أكثر بنات صفها حيوية وضحكًا. منذ أسبوعين تغيّرت، ولم تقل لأحد شيئًا.',links:[['st','تأخّرت 3 أيام… وتمرّ دون أن تسلّم كعادتها'],['mt','صارت آخر من تخرج… تنتظر حتى يخلو المكان'],['kh','العاملات يرينها تقضي الفسحة في دورة المياه'],['mq','لم تعد تشتري… وأمس رمت سندويشتها كاملة'],['ms','تجلس وحدها في الفسحة… ولا تكلّم أحدًا']],end:'كل واحدة رأت قطعة… والقطع تجتمع عند منسقة شؤون الطالبات، فتكتمل الصورة وتصل إلى لجنة إدارة السلوك والاختصاصيتين.'};
+const CHAIN={scene:'«نورة» في الصف الحادي عشر… كانت أكثر بنات صفها حيوية وضحكًا. منذ أسبوعين تغيّرت، ولم تقل لأحد شيئًا.',links:[['st','تأخّرت 3 أيام… وتمرّ دون أن تسلّم كعادتها'],['mt','صارت آخر من تخرج… تنتظر حتى يخلو المكان'],['mq','لم تعد تشتري… وأمس رمت سندويشتها كاملة'],['ms','تجلس وحدها في الفسحة… ولا تكلّم أحدًا']],end:'كل واحدة رأت قطعة… والقطع تجتمع عند منسقة شؤون الطالبات، فتكتمل الصورة وتصل إلى لجنة إدارة السلوك والاختصاصيتين.'};
 const IHSAN={name:'خزانة الشيماء',ayah:'﴿وَأَحْسِنُوا ۛ إِنَّ اللَّهَ يُحِبُّ الْمُحْسِنِينَ﴾',cards:[{i:'🧥',t:'جاهزة دائمًا',d:'جاكيتات بمقاسات مختلفة، وعباءات، وشيلات… نجمعها مما يفيض عندنا أو نشتريها.'},{i:'🛍️',t:'في مكانٍ واحد',d:'كل قطعة في كيسٍ نظيف ومغلق ومحفوظ.'},{i:'🤍',t:'لكل بنت',d:'نسيت عباءتها، أو ضاعت شيلتها… تأخذ ما يسترها بهدوء، ودون أن يعرف أحد.'}]};
 const MAPLINES={on:['وينكم؟ 👀 معانا ولا مع الأسف؟','الصقور طارت… وأنتوا للحين تدوّرون المفتاح؟ 🔑😅','المفتاح طاح منكم في الطريق؟ 🗝️😅 ارجعوا دوّروه!','الكنز ما يطير… بس الوقت يطير ⏳ شدّوا حيلكم','نبي نشوف عيون الصقر… مو عيون الحمام 🕊️😄'],ok:['وصلتوا! 🦅 عيونكم عيون صقر','كفو! المفتاح بيدكم 🗝️… لا تضيّعونه','في المقدمة… بس لا تغترّون 😏','هذا الشغل! 🦅 المحطة الجاية نبيها بعد']};
 const IMG={io:'img/riley.png',taare:'img/ishaan.png'}; // صور تضيفها المدربة بنفسها في مجلد img (تظهر إذا وُجدت)
@@ -905,13 +902,13 @@ const PLAN=[
 const GOALT=['','لماذا نعلّم الانضباط؟ ولماذا الثانوية؟','كل مسمّى عين في السلسلة','نقرأ الإشارات خلف السلوك','قائدة قسمكِ… تتابع حتى الأثر'];
 const CHECKS={
  1:{learn:['الانضباط نعلّمه بالعادات الصغيرة كل يوم… لا بالقوة.','البنت تحمل ما تتعلّمه هنا إلى بيتها وحياتها.','في الثانوية… نحن الفرامل المؤقتة حتى تكتمل فرامل البنت.'],
-   duty:[['المشرفة','تعلّم العادة الصغيرة كل يوم: الطابور، والزي، والوقت.'],['الاختصاصيتان','تشرحان للبنت «لماذا»… ولا تكتفيان بالمنع.'],['الاستقبال','الوقت يبدأ من البوابة: تسجيلٌ دقيق، وابتسامة.'],['المقصف والخدمات والمخزن','النظام في المكان جزءٌ من التربية.'],['منسقة شؤون الطالبات','تتأكد أن القاعدة واحدة عند الجميع.']]},
+   duty:[['المشرفة','تعلّم العادة الصغيرة كل يوم: الطابور، والزي، والوقت.'],['الاختصاصيتان','تشرحان للبنت «لماذا»… ولا تكتفيان بالمنع.'],['الاستقبال','الوقت يبدأ من البوابة: تسجيلٌ دقيق، وابتسامة.'],['المقصف والمخزن','النظام في المكان جزءٌ من التربية.'],['منسقة شؤون الطالبات','تتأكد أن القاعدة واحدة عند الجميع.']]},
  2:{learn:['كل مسمّى يرى قطعة من البنت… لا يراها غيره.','الصورة لا تكتمل إلا حين تصل القطع إلى بعضها.','لن تثق البنت بمن لا يعرف عالمها.'],
    duty:[['المشرفة','الأم والموجّهة.'],['الاختصاصية الاجتماعية','بئر الأسرار… والصدر الحنون الذي يسمع ويوجّه.'],['الاختصاصية النفسية','بلسم القلوب… تدخل إلى أعماقهن.'],['الاستقبال','ابتسامة و«عسى ما شر؟»… أو نظرة حانية.'],['منسقة شؤون الطالبات','همزة الوصل… تجمع الصورة كاملة وتوصلها إلى لجنة إدارة السلوك.']]},
  3:{learn:['التغيّر هو الإشارة… لا الحدث العابر.','وراء السلوك سببٌ نسأل عنه قبل أن نحكم.','بعض المخالفات تُكتب… وبعضها تكفيه كلمة.'],
-   duty:[['المشرفة','تلاحظ التغيّر، وتكتب ما رأت بلا حكم.'],['الاختصاصيتان','تبحثان عن السبب خلف السلوك.'],['الاستقبال والمقصف','تنقلان ما رأتاه بدقة إلى من يعنيه.'],['الخدمات والمخزن','عينٌ في كل زاوية… تبلّغ ولا تشخّص.'],['منسقة شؤون الطالبات','تجمع الملاحظات المتفرّقة في صورة واحدة.']]},
+   duty:[['المشرفة','تلاحظ التغيّر، وتكتب ما رأت بلا حكم.'],['الاختصاصيتان','تبحثان عن السبب خلف السلوك.'],['الاستقبال والمقصف','تنقلان ما رأتاه بدقة إلى من يعنيه.'],['المخزن','عينٌ في كل زاوية… تبلّغ ولا تشخّص.'],['منسقة شؤون الطالبات','تجمع الملاحظات المتفرّقة في صورة واحدة.']]},
  4:{learn:['كل واحدة منّا قائدة في مكانها… تجمع الحزم والمرونة.','الحب لا يعني التساهل.','المدرسة لا تُقاس بقلّة المخالفات… بل بأثر المتابعة.'],
-   duty:[['المشرفة','مديرة قسمها: خطة، ويوم خميس، وقائدة لكل صف.'],['الاختصاصيتان','موعد عودة… وتحقّق من الأثر.'],['الاستقبال','سجلّ الوصول دليلٌ على التحسّن.'],['المقصف والخدمات والمخزن','عينٌ تبقى منتبهة بعد أن يهدأ الضجيج.'],['منسقة شؤون الطالبات','لا تُغلق الملف… حتى ترى الأثر.']]}};
+   duty:[['المشرفة','مديرة قسمها: خطة، ويوم خميس، وقائدة لكل صف.'],['الاختصاصيتان','موعد عودة… وتحقّق من الأثر.'],['الاستقبال','سجلّ الوصول دليلٌ على التحسّن.'],['المقصف والمخزن','عينٌ تبقى منتبهة بعد أن يهدأ الضجيج.'],['منسقة شؤون الطالبات','لا تُغلق الملف… حتى ترى الأثر.']]}};
 const KEYSL=[{i:'📱',t:'كوني على اطّلاع',d:'اعرفي ما يحببنه، وما يتابعنه، وما يشغل بالهن.'},{i:'🤝',t:'ابحثي عن شيءٍ مشترك',d:'شيءٌ صغير بينكِ وبينهن… يفتح باب الثقة.'},{i:'🔒',t:'وإلا… يُغلق الباب',d:'إذا شعرن أنكِ بعيدة عن عالمهن… لن يثقن بكِ، ولن يسمعن منكِ.'}];
 const WRITES={w:['ما تكرّر رغم التوجيه','ما فيه إساءة أو ضرر','ما تنصّ عليه السياسة بإجراء'],g:['الخطأ الأول من بنتٍ ملتزمة','النسيان العابر','ما لا يضرّ أحدًا']};
 const LEADER=[{t:'خطتكِ',d:'تضعين خطة قسمكِ، وتناقشينها مع المسؤولة: الزي، والحضور، والهدوء.'},{t:'يوم الخميس',d:'يُعلن للبنات: لا رصد للبسيط كالجاكيت والهودي… بما لا يخالف الدين ولا الأعراف. والإدارة تعرف… وتتغافل.'},{t:'خط الرجعة',d:'لا تخوّفيهن بالإدارة… بل: «ترضون إن الإدارة تحاسبني أنا بسببكم؟»'},{t:'قائدة لكل صف',d:'طالبة توصل صوت صفها… حتى لا تخرج البنات من القسم كل مرة.'}];
@@ -1077,7 +1074,7 @@ function slideHTML(f){
  if(f.leader)return`<div class="sl"><div class="hd"><span class="tg">👑 قائدة قسمكِ</span><h2>أنتِ مديرة قسمكِ… حزمٌ ومرونة</h2></div><div class="c4 cards" style="grid-template-columns:repeat(4,1fr);padding-bottom:20px">${LEADER.map((g,i)=>F(i,`<h3>${g.t}</h3><p>${g.d}</p>`,'div','cd')).join('')}</div>${F(4,'الحب لا يعني التساهل… والبنت التي تحب مشرفتها، لن ترضى أن تُحاسَب مشرفتها بسببها','div','btm')}</div>`;
  if(f.haiba)return`<div class="sl"><div class="hd"><span class="tg">🏛️ هيبة الحرم المدرسي</span><h2>المكان له هيبته… ونحن نعلّمها</h2></div><div class="c4 cards" style="grid-template-columns:repeat(4,1fr)">${HAIBA.map((g,i)=>F(i,`<div class="i">${g.i}</div><h3>${g.t}</h3><p>${g.d}</p>`,'div','cd')).join('')}</div>${step>=5?`<div class="stz"><div class="pzt">🪞 سؤال المرآة… قبل أن تخرج البنت من البيت</div><div class="zm">«لو جاتني اليوم زيارة مفاجئة…<br><span style="color:#E8C26A">هل يليق أن أقابل القيادات بهذا الشكل؟»</span></div></div>`:''}</div>`;
  if(f.chest){const g=gStats(),W=g.S.map((s,i)=>({i,s})).filter(x=>g.G[x.i].length).sort((a,b)=>b.s-a.s)[0],kn=know(4);return`<div class="sl chs"><div class="ctr" style="justify-content:flex-start;padding-top:50px">${kmeter(kn)}<div class="t1" style="font-size:84px;margin-top:20px">الكنز هو المعرفة… والأثر</div></div>${W?`<div style="position:absolute;bottom:70px;left:0;right:0;text-align:center"><div style="display:inline-block;background:rgba(8,24,14,.85);border:3px solid #C9A04E;border-radius:30px;padding:20px 50px;animation:pop .8s both"><div style="font-size:26px;color:#E8C26A">🏆 المجموعة الفائزة</div><div style="font-size:76px;color:${GROUPS[W.i].c==='#2E7D32'?'#8DBF6E':'#F6F1E7'}">مجموعة ${GROUPS[W.i].t}</div><div style="font-size:24px;color:#D6E2CC">${ar(W.s)} نقطة · ${g.G[W.i].map(first).join(' · ')}</div></div></div>`:''}</div>`}
- if(f.chain)return`<div class="sl"><div class="hd"><span class="tg">🔗 سلسلة نورة</span><h2>كل عين رأت قطعة… فمن يجمعها؟</h2></div><div class="chn"><div class="sc">🌧️ ${esc(CHAIN.scene)}</div><div class="lks">${CHAIN.links.map((l,i)=>{const r=roleOf(l[0]);return F(i,`<b>${r.i} ${r.t}</b><span>${esc(l[1])}</span>`,'div','lk')}).join('')}</div>${F(5,`🧭 ${esc(CHAIN.end)}`,'div','btm')}</div></div>`;
+ if(f.chain)return`<div class="sl"><div class="hd"><span class="tg">🔗 سلسلة نورة</span><h2>كل عين رأت قطعة… فمن يجمعها؟</h2></div><div class="chn"><div class="sc">🌧️ ${esc(CHAIN.scene)}</div><div class="lks">${CHAIN.links.map((l,i)=>{const r=roleOf(l[0]);return F(i,`<b>${r.i} ${r.t}</b><span>${esc(l[1])}</span>`,'div','lk')}).join('')}</div>${F(CHAIN.links.length,`🧭 ${esc(CHAIN.end)}`,'div','btm')}</div></div>`;
  if(f.ihsan)return`<div class="sl"><div class="hd"><span class="tg">🤍 مبادرة</span><h2>«${IHSAN.name}»</h2><span class="ay">${IHSAN.ayah}</span></div><div class="c4 cards" style="grid-template-columns:repeat(3,1fr)">${IHSAN.cards.map((g,i)=>F(i,`<div class="i">${g.i}</div><h3>${g.t}</h3><p>${g.d}</p>`,'div','cd')).join('')}</div></div>`;
  if(f.rq)return rqHTML(f.rq);
  if(f.q)return qHTML(f.q);
@@ -1171,7 +1168,7 @@ function rqHTML(eid){const e=EVENTS.find(x=>x.id===eid),A=ALLA[eid]||{},rev=phas
  return`<div class="sl"><div class="hd"><span class="tg">${e.icon} ${e.title}</span><h2>📲 سؤالكِ على جوالكِ: ماذا تفعلين أنتِ؟</h2></div><div class="rq"><div><div class="sc">${esc(e.scene)}</div>${phase==='open'?timerHTML(QT_ROLE):''}</div><div class="rg">${tiles}</div></div></div>`}
 
 /* ===== المجموعات والمعرفة ===== */
-const GCAT={ms:'a',mt:'a',ij:'b',nf:'b',st:'c',mq:'c',mk:'c',kh:'d',mn:'e'};
+const GCAT={ms:'a',mt:'a',ij:'b',nf:'b',st:'c',mq:'c',mk:'c',mn:'e'};
 function groupMap(A,R){const G=GROUPS.map(()=>[]),M={};(A||[]).forEach(n=>{const cat=GCAT[R[n]]||'z';let best=0,bs=1e9;G.forEach((g,i)=>{const s=g.filter(m=>(GCAT[R[m]]||'z')===cat).length*100+g.length;if(s<bs){bs=s;best=i}});G[best].push(n);M[n]=best});return{G,M}}
 function gStats(){const{G,M}=groupMap(att,ROLESOF),S=G.map(()=>0),K=[0,1,2,3].map(()=>G.map(()=>null));
  Object.keys(ALLA).forEach(id=>{const q=qOf(id);if(!q||q.type==='hot'||q.type==='wall')return;const A=ALLA[id];G.forEach((mem,gi)=>{if(!mem.length)return;let sum=0,ok=0;mem.forEach(n=>{const s=A[n]?scoreOne(id,n,A[n],ROLESOF):0;sum+=s;if(s>=20)ok++});S[gi]+=sum/mem.length;if((q.type==='role'||q.key)&&ok===mem.length)S[gi]+=10;if(q.key)K[q.key-1][gi]=ok/mem.length})});
@@ -1228,7 +1225,7 @@ let ambOK=false;function next(){const f=FLOW[cur],id=qidOf(f);if(f.cover&&!ambOK
  if(cur<FLOW.length-1){cur++;step=0;phase='idle';show()}}
 function prev(){const ho=document.getElementById('hon');if(ho){ho.remove();honI=Math.max(0,honI-1);return}if(stopOn){stopOn=false;draw();return}if(step>0){autoStop();step--;reveal();return}if(cur>0){autoStop();cur--;step=0;phase='idle';stopOn=false;show()}}
 /* محاكاة المعاينة */
-const BOTS=[['تجريبية أولى','mn'],['تجريبية ثانية','ms'],['تجريبية ثالثة','ms'],['تجريبية رابعة','ij'],['تجريبية خامسة','nf'],['تجريبية سادسة','st'],['تجريبية سابعة','mt'],['تجريبية ثامنة','mq'],['تجريبية تاسعة','mk'],['تجريبية عاشرة','kh'],['تجريبية 11','kh'],['تجريبية 12','mt']];
+const BOTS=[['تجريبية أولى','mn'],['تجريبية ثانية','ms'],['تجريبية ثالثة','ms'],['تجريبية رابعة','ij'],['تجريبية خامسة','nf'],['تجريبية سادسة','st'],['تجريبية سابعة','mt'],['تجريبية ثامنة','mq'],['تجريبية تاسعة','mk'],['تجريبية عاشرة','mt'],['تجريبية 11','ms'],['تجريبية 12','mt']];
 function simJoin(){BOTS.forEach(([n,r],i)=>setTimeout(()=>Local.handle({a:'join',n,r}),600+i*700))}
 function sim(id){BOTS.forEach(([n,r],i)=>setTimeout(()=>{if(phase!=='open')return;let v;const h=hash(n+id)%10;
  if(id==='spot'){v=[1,3,4,6,7].filter(k=>hash(n+k)%10<7).concat(h<3?[0]:[]).join(',')}
