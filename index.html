@@ -443,6 +443,10 @@ body{background:#08170E;overflow:hidden}.hidden{display:none!important}
 #stage .gold{flex:0 0 auto;align-items:center;padding:6px 80px 0}
 #stage .rings{width:420px;height:420px}#stage .ring.r0{inset:140px}#stage .ring.r1{inset:70px}
 #stage .gbig{bottom:70px}
+
+#stage .qz,#stage .spot,#stage .rq,#stage .chn,#stage .chx{min-height:0}
+#stage .qz>div:first-child{overflow:hidden}
+#ctl{transition:opacity .4s}#ctl.hid{opacity:0!important;pointer-events:none}
 </style>
 </head>
 <body>
@@ -1246,6 +1250,7 @@ function Screen(){$('#wrap').classList.remove('hidden');$('#ctl').classList.remo
  $('#bPause').onclick=e=>{if(e)e.stopPropagation();paused=!paused;$('#bPause').textContent=paused?'▶ المؤقت':'⏸ المؤقت'};
  $('#bSnd').onclick=()=>{soundOn=!soundOn;if(!soundOn)stopAmb();$('#bSnd').textContent=soundOn?'🔊':'🔇'};
  $('#bReset').onclick=async()=>{if(!confirm('تصفير الحضور والإجابات والبدء من الغلاف؟'))return;await api({a:'reset'});Object.keys(ALLA).forEach(k=>delete ALLA[k]);att=[];cur=0;step=0;phase='idle';show();if(DEMO)simJoin()};
+ {let ht=null;const sh=()=>{$('#ctl').classList.remove('hid');clearTimeout(ht);ht=setTimeout(()=>$('#ctl').classList.add('hid'),2500)};addEventListener('mousemove',sh);sh()}
  show();setInterval(pollScreen,DEMO?800:2000)}
 if(location.hash==='#join'){$('#phone').classList.remove('hidden');Phone($('#phone'))}else Screen();
 </script>
