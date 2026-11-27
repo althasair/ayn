@@ -433,6 +433,12 @@ body{background:#08170E;overflow:hidden}.hidden{display:none!important}
 @keyframes cnf{to{transform:translate(var(--d),980px) rotate(var(--r));opacity:.8}}
 #hon .hr{font-size:26px;color:#C5E0B4;margin-top:6px}#hon .hm{font-size:24px;color:#E8C26A;line-height:1.7;max-width:1000px;margin:6px auto 0}
 #stage[data-bg] .sl{background:transparent!important}
+
+.ph.mirmode{height:100vh;height:100dvh;overflow:hidden}
+.mirmode .phB{display:flex;flex-direction:column;align-items:center;padding:8px;overflow:hidden}
+.mirmode .mirw{flex:0 0 auto;margin:0 auto}
+.mirmode .mline,.mirmode .mirh{width:100%}
+@media (orientation:landscape){.mirmode .phTop{padding:4px 12px}.mirmode .phTop small{display:none}.mirmode .mirh,.mirmode .mfs{display:none}.mirmode .mline{padding:4px 10px;margin-bottom:6px}.mirmode .mline img{height:46px;width:28px}.mirmode .mline p{font-size:15px;margin:0}}
 </style>
 </head>
 <body>
@@ -986,7 +992,8 @@ function Phone(root){
    if(st.ph==='map'){const mg=groupMap(snap.att,snap.roles||{}).M[me];if(mg!==undefined){const ok=(st.qid||'')[mg]==='1';top=`<div class="mline ${ok?'ok':''}"><img src="${GROUPS[mg].img}"><div><b>مجموعة ${GROUPS[mg].t}</b><p>${esc(pick(MAPLINES[ok?'ok':'on'],me+st.i))}</p></div></div>`}}
    shell(`${top}<div class="mirh">👀 تابعي العرض من هنا… والسؤال يصلكِ تلقائيًا</div><div class="mirw"></div><button class="mfs" id="mfs">⛶ تكبير بالعرض</button>`);
    const w=root.querySelector('.mirw'),f=FLOW[st.i]||FLOW[0];w.appendChild(STG);const sv=step,pv=phase;step=99;phase='idle';try{STG.dataset.bg=bgOf(f)+(f.cover||f.chest?'c':'');STG.innerHTML=slideHTML(f);const sl=STG.querySelector('.sl');if(sl)sl.classList.add(bgOf(f));STG.querySelectorAll('iframe,.hbtn,.ap').forEach(x=>x.remove())}catch(e){STG.innerHTML=''}step=sv;phase=pv;
-   const fitM=()=>{const W=w.clientWidth||340,s=W/1600;STG.style.transform=`scale(${s})`;STG.style.transformOrigin='top right';w.style.height=(900*s)+'px'};fitM();setTimeout(()=>{fitM();try{autoFit()}catch(e){}},60);window.onresize=fitM;
+   const ph=root.querySelector('.ph');if(ph)ph.classList.add('mirmode');root.scrollTop=0;
+   const fitM=()=>{const bw=root.querySelector('.phB'),btn=root.querySelector('#mfs'),fs=document.fullscreenElement===w;const availW=fs?innerWidth:(bw.clientWidth-16);const top=fs?0:w.getBoundingClientRect().top+root.scrollTop;const availH=fs?innerHeight:(innerHeight-top-(btn&&btn.offsetParent?btn.offsetHeight+14:0)-8);const s=Math.max(.1,Math.min(availW/1600,availH/900));w.style.width=(1600*s)+'px';w.style.height=(900*s)+'px';STG.style.transform=`scale(${s})`;STG.style.transformOrigin='top right'};fitM();setTimeout(()=>{fitM();try{autoFit()}catch(e){}},60);window.onresize=fitM;document.onfullscreenchange=()=>setTimeout(fitM,200);
    root.querySelector('#mfs').onclick=async()=>{try{await w.requestFullscreen();await screen.orientation.lock('landscape')}catch(e){toast('اقلبي الجوال بالعرض')}setTimeout(fitM,400)};
    return}
   if(st.ph==='open'){
